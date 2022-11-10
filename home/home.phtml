@@ -1,0 +1,210 @@
+<html>
+<head>
+
+    <style>
+        #head {
+            background-color: #2e2e2e;
+            height: 15%;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* boton*/
+        #body {
+            background-color: #E9CC9E;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        #singup_login {
+            font-size: 16px; /* Cambiar el tamaño de la tipografia */
+            text-transform: uppercase; /* Texto en mayusculas */
+            font-weight: bold; /* Fuente en negrita o bold */
+            color: #ffffff; /* Color del texto */
+            border-radius: 5px; /* Borde del boton */
+            letter-spacing: 2px; /* Espacio entre letras */
+            background-color: #ce7f08; /* Color de fondo */
+            padding: 18px 30px; /* Relleno del boton */
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            transition: all 300ms ease 0ms;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+            cursor: pointer;
+        }
+
+        #singup_login:hover {
+            background-color: #AD6F12; /* Color de fondo al pasar el cursor */
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-7px);
+        }
+
+        @media only screen and (max-width: 600px) {
+            .btn-flotante {
+                font-size: 14px;
+                padding: 12px 20px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+        }
+
+        #hr_pages {
+            padding-bottom: 30px;
+            background-color: #2e2e2e;
+            width: 100%;
+            height: 20%;
+        }
+
+        #posts {
+            width: 100%;
+            height: 80%;
+        }
+
+        #content_search {
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        #search {
+            border: none;
+            border-bottom: 2px solid #ce7f08;
+            background-color: transparent;
+            width: 40rem;
+        }
+        
+        #search::placeholder {
+            color: #2e2e2e;
+        }
+
+        #search:focus {
+            outline: none;
+        }
+
+        #search + ion-icon[name="search-sharp"] {
+            position: absolute;
+            color: #ce7f08;
+            right: 27.5rem;
+        }
+    </style>
+    <title>InfoTeach</title>
+
+
+    <link rel="stylesheet" href="/Paginaciones/02_Paginación/css/styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+
+<body id="body">
+<div id="head">
+    <h1>InfoTeach</h1>
+
+
+    <?php
+    $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+    if (isset($_GET["submit"])) {
+
+        $str = $_POST["search"];
+        $sth = $conexion->prepare("SELECT * FROM web_grupo_alex_foro WHERE title = $str");
+        $sth->setFetchMode(PDO:: FETCH_OBJ);
+        $sth->execute();
+        if ($row = $sth->fetch()) {
+            ?>
+            <br><br><br>
+            <table>
+                <tr>
+                    <th>
+                        tittle
+                    </th>
+                </tr>
+                <tr>
+                    <td><?php echo $row->title ?> </td>
+                </tr>
+            </table>
+            <?php
+        } else {
+            echo "No existe";
+        }
+    }
+    ?>
+</div>
+<div id="content_search">
+    <form action="" method="GET">
+        <input id="search" type="text" placeholder="Type here">
+        <ion-icon name="search-sharp"></ion-icon>
+    </form>
+</div>
+
+
+<a href="../../login_signup/login_sign_up.phtml">
+    <button type="button" id="singup_login">Inciar sesión/registrase</button>
+</a>
+<div class="contenedor">
+
+    <section class="articulos">
+        <ul>
+            <?php global $articulos;
+            foreach ($articulos as $articulo): ?>
+                <li>
+                    <?php echo $articulo['title'] . '.- ' . $articulo['content']; ?>
+                    <button href="hola/view.html?title=<?php echo $articulo['title']; ?>"> leer</button>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+
+</div>
+
+
+</div>
+
+
+<div id="hr_pages">
+
+    <section class="paginacion">
+        <ul>
+            <!-- Establecemos cuando el boton de "anterior" estara deshabilitado -->
+            <?php global $pagina;
+            if ($pagina == 1): ?>
+                <li class="disabled">&laquo;</li>
+            <?php else: ?>
+                <li><a href="?pagina=<?php echo $pagina - 1 ?>">&laquo;</a></li>
+            <?php endif; ?>
+
+            <!-- Ejecutamos un ciclo para mostrar las páginas -->
+            <?php
+            global $numeroPaginas;
+            for ($i = 1; $i <= $numeroPaginas; $i++) {
+                if ($pagina == $i) {
+                    echo "<li class='active'><a href='?pagina=$i'>$i</a></li>";
+                } else {
+                    echo "<li><a href='?pagina=$i'>$i</a></li>";
+                }
+            }
+            ?>
+
+            <!-- Establecemos cuando el boton de "siguiente" estara deshabilitado -->
+            <?php if ($pagina == $numeroPaginas): ?>
+                <li class="disabled">&raquo;</li>
+            <?php else: ?>
+                <li><a href="?pagina=<?php echo $pagina + 1 ?>">&raquo;</a></li>
+            <?php endif; ?>
+
+        </ul>
+    </section>
+</div>
+</body>
+</html>
+
+

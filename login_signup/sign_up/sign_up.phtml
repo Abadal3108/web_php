@@ -1,0 +1,32 @@
+<?php
+    require("sign_up.php");
+
+?>
+<div class="container">
+
+    <h1>Sign Up</h1>
+    <link rel="stylesheet" type="text/css" href="sign_up.css">
+    <form action="sign_up.phtml" method="POST">
+        <input type="text" placeholder="username" class="field" name="name">
+        <input type="password" placeholder="password" class="field" name="password">
+        <input type="email" placeholder="mail" class="field" name="mail">
+        <input type="number" placeholder=" age" class="field" name="age">
+        <input type="submit" value="login" class="btn">
+    </form>
+    <div class="pass-link">
+
+    </div>
+</div>
+<div>
+    <?php
+
+    global $mail;
+    global $result;
+    if (isset($mail)) {
+        if ($mail == $result['mail']) {
+
+            echo('<h2 id="error_mail_igual">Correo está en uso</h2>');
+        }
+    }
+    ?>
+</div>

@@ -1,0 +1,88 @@
+
+<html>
+<head>
+
+
+    <style>
+
+        #body {
+            background-color: #3498DB;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        #hr_pages {
+            padding: 40px;
+            width: 100%;
+            height: 10%;
+
+
+
+        }
+    </style>
+    <title>InfoTeach</title>
+
+
+    <link rel="stylesheet" href="/Paginaciones/02_Paginación/css/styles.css">
+</head>
+
+
+<body id="body">
+<h1>InfoTeach</h1>
+
+<hr>
+<div class="contenedor">
+    <h1>Articulos</h1>
+    <section class="articulos">
+        <ul>
+            <?php global $articulos;
+            foreach ($articulos as $articulo): ?>
+                <li><?php echo $articulo['title'] . '.- ' . $articulo['content'] ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+
+</div>
+
+
+</div>
+<div id="hr_pages">
+
+    <section class="paginacion">
+        <ul>
+            <!-- Establecemos cuando el boton de "anterior" estara deshabilitado -->
+            <?php global $pagina;
+            if ($pagina == 1): ?>
+                <li class="disabled">&laquo;</li>
+            <?php else: ?>
+                <li><a href="?pagina=<?php echo $pagina - 1 ?>">&laquo;</a></li>
+            <?php endif; ?>
+
+            <!-- Ejecutamos un ciclo para mostrar las páginas -->
+            <?php
+            global $numeroPaginas;
+            for ($i = 1; $i <= $numeroPaginas; $i++) {
+                if ($pagina == $i) {
+                    echo "<li class='active'><a href='?pagina=$i'>$i</a></li>";
+                } else {
+                    echo "<li><a href='?pagina=$i'>$i</a></li>";
+                }
+            }
+            ?>
+
+            <!-- Establecemos cuando el boton de "siguiente" estara deshabilitado -->
+            <?php if ($pagina == $numeroPaginas): ?>
+                <li class="disabled">&raquo;</li>
+            <?php else: ?>
+                <li><a href="?pagina=<?php echo $pagina + 1 ?>">&raquo;</a></li>
+            <?php endif; ?>
+
+        </ul>
+    </section>
+</div>
+<hr>
+</body>
+</html>
