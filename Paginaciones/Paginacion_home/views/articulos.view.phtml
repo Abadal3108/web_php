@@ -13,12 +13,8 @@
         <section class="articulos">
             <ul>
                 <?php global $articulos; foreach($articulos as $articulo): ?>
-                    <?php
-
-                    ?>
-                    <li><?php echo $articulo['title'] . '.- ' . $articulo['content'] ?></li>
+                    <li><?php echo $articulo['name'] . '.- ' . $articulo['mail'] ?></li>
                 <?php endforeach; ?>
-
             </ul>
         </section>
         <section class="paginacion">
@@ -29,7 +25,7 @@
                 <?php else: ?>
                     <li><a href="?pagina=<?php echo $pagina-1?>">&laquo;</a></li>
                 <?php endif; ?>
-
+                
                 <!-- Ejecutamos un ciclo para mostrar las páginas -->
                 <?php
                     global $numeroPaginas;
@@ -41,14 +37,14 @@
                         }
                     }
                 ?>
-
+                
                 <!-- Establecemos cuando el boton de "siguiente" estara deshabilitado -->
                 <?php if($pagina == $numeroPaginas): ?>
                     <li class="disabled">&raquo;</li>
                 <?php else: ?>
                     <li><a href="?pagina=<?php echo $pagina+1?>">&raquo;</a></li>
                 <?php endif; ?>
-
+                
             </ul>
         </section>
     </div>

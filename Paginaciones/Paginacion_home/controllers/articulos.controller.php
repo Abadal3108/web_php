@@ -1,6 +1,6 @@
 <?php
 // Llamamos al modelo
-require('Paginaciones/02_Paginación/models/articulos.model.php');
+require('models/articulos.model.php');
 
 
 $artic = new Articulos_model();
@@ -10,7 +10,10 @@ $numeroPaginas = $artic->getTotalPages();
 
 // Llamamos a la vista
 header('Content-Type: text/html; charset=utf-8');
- require('home/home.phtml');
+session_start();
+if (isset($_SESSION['user'])){
+    require ('../../home/home_user.phtml');
+}else{
+    require('../../home/home.phtml');
 
-
-
+}

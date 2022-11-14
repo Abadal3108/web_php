@@ -1,6 +1,6 @@
 <?php
 
-require_once("Paginaciones/02_Paginación/configs/config.php");
+require_once("configs/config.php");
 
 class Articulos_model{
     private $conexion;
@@ -18,7 +18,7 @@ class Articulos_model{
         $postsPorPagina = $blog_config['posts_por_pagina'];
         $inicio = ($pagina_actual > 1)? ($pagina_actual * $postsPorPagina - $postsPorPagina ) : 0;
         $articulos = $this->conexion->prepare("
-            SELECT SQL_CALC_FOUND_ROWS * FROM web_grupo_alex_foro
+            SELECT SQL_CALC_FOUND_ROWS * FROM web_grupo_alex_foro 
             LIMIT $inicio, $postsPorPagina
         ");
         $articulos->execute();
