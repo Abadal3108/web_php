@@ -18,14 +18,14 @@ $resultados = $conexion->query("CREATE TABLE web_grupo_alex_foro (
     image varchar(255)
 )");
 */
-
+/*
 $add = $conexion->query("insert into web_grupo_alex(name,mail,password,age,rol,image)
 values ('Alex','alex@gmail.com','alex13579',19,'admin','')");
-
-
+*/
+/*
 $add = $conexion->query("insert into web_grupo_alex_foro(title,description,content,image)
-values ('Prueba1','descripcion','hola me llamo alex hola me llamo nil','')");
-
+values ('try4','descripcion','hola me llamo alex hola me llamo nil','captura.png')");
+*/
 $resulta = $conexion->query("SELECT * FROM web_grupo_alex ");
 foreach ($resulta as $fila) {
     echo $fila['name'] . '</br>';

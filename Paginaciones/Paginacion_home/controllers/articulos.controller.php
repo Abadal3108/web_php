@@ -11,9 +11,7 @@ $numeroPaginas = $artic->getTotalPages();
 // Llamamos a la vista
 header('Content-Type: text/html; charset=utf-8');
 session_start();
-if (isset($_SESSION['user'])){
-    require ('../../home/home_user.phtml');
-}else{
+
     require('../../home/home.phtml');
 
-}
+
