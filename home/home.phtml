@@ -160,7 +160,7 @@
             <?php global $articulos;
             foreach ($articulos as $articulo): ?>
                 <li>
-                    <?php echo $articulo['title'] . '.- ' . $articulo['content']; ?>
+                    <?php echo $articulo['title'] . '.- ' . $articulo['description']; ?>
                     <button href="hola/view.html?title=<?php echo $articulo['title']; ?>"> leer</button>
                 </li>
             <?php endforeach; ?>
