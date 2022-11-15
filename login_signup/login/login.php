@@ -18,12 +18,14 @@ if (!isset($_POST['mail'])){
             echo "incorrecto";
         } else {
             if ($mail == $result['mail'] && $password == $result['password']) {
-
-                header("Location: http://localhost:63343/project_web/Paginaciones/01_Paginaci%C3%B3n/index.php?_ijt=6n3hhau0gn47un83e733mirbk7&_ij_reload=RELOAD_ON_SAVE");
+                $login = 1;
+                session_start();
+                $_SESSION['user'] = $mail;
+                header("Location: ../../Paginaciones/Paginacion_home/index.php");
 
 
             } else {
-                header("Location: http://localhost:63343/project_web/login_signup/login/login.html");
+                header("Location: login.html");
             }
         }
     }
