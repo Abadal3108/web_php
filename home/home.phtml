@@ -114,36 +114,10 @@
     <h1>InfoTeach</h1>
 
 
-    <?php
-    $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
-    if (isset($_GET["submit"])) {
 
-        $str = $_POST["search"];
-        $sth = $conexion->prepare("SELECT * FROM web_grupo_alex_foro WHERE title = $str");
-        $sth->setFetchMode(PDO:: FETCH_OBJ);
-        $sth->execute();
-        if ($row = $sth->fetch()) {
-            ?>
-            <br><br><br>
-            <table>
-                <tr>
-                    <th>
-                        tittle
-                    </th>
-                </tr>
-                <tr>
-                    <td><?php echo $row->title ?> </td>
-                </tr>
-            </table>
-            <?php
-        } else {
-            echo "No existe";
-        }
-    }
-    ?>
 </div>
 <div id="content_search">
-    <form action="" method="GET" class="form">
+    <form action="../../search/search.phtml" method="GET" class="form">
         <input id="search" type="text" placeholder="Type here">
         <ion-icon name="search-sharp"></ion-icon>
     </form>

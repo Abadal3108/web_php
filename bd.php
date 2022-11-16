@@ -7,7 +7,8 @@ $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
     password varchar(255),
     age numeric,
     rol varchar(255),      
-    image varchar(255)
+    image varchar(255),
+
 )");
 */
 /*
@@ -15,7 +16,8 @@ $resultados = $conexion->query("CREATE TABLE web_grupo_alex_foro (
     title varchar(30) PRIMARY KEY,    
     description varchar(30),
     content varchar(4000),
-    image varchar(255)
+    image varchar(255),
+    date date
 )");
 */
 /*
