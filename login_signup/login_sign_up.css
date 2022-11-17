@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #E9CC9E;
+    background-color: #515760;
     font-family: "Arial", sans-serif;
     padding: 50px;
 }
@@ -12,7 +12,7 @@ body{
     padding: 10px;
     width: 400px;
     height: 240px;
-    background-color: #F6DFA3;
+    background-color: #D6EC90;
     border-radius: 5px;
 }
 h1{
@@ -26,7 +26,7 @@ h1{
 }
 
 button{
-    background-color: #FEC363;
+    background-color: #2E9F84;
     color: #fff;
     padding: 12px 0;
     margin-bottom: 10px;

@@ -1,0 +1,32 @@
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+session_start();
+
+
+$result = $conexion->query('SELECT title,description,content,image,date FROM web_grupo_alex_foro WHERE title="' . $_POST['title'] . '"')->fetch();
+?>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="publicar.css">
+</head>
+<body>
+<h1><?php echo $result['title'] ?></h1>
+
+<div id="content_blog">
+    <div id="description"></div>
+    <a><?php echo $result['description'] ?></a>
+    <br>
+    <div id="content"></div>
+    <a><?php echo $result['content'] ?></a>
+    <br>
+    <div id="image"></div>
+    <a><img src="<?php echo "../../images/" . $result['image']; ?>" alt="<?php echo $result['title']; ?>"
+            width="400" height="350">
+    </a>
+    <br>
+    <div id="date"></div>
+    <a><?php echo $result['date'] ?></a>
+    <br>
+</div>
+</body>
+</html>

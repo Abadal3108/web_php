@@ -1,6 +1,11 @@
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         #head {
             background-color: #2e2e2e;
@@ -29,7 +34,7 @@
             color: #ffffff; /* Color del texto */
             border-radius: 5px; /* Borde del boton */
             letter-spacing: 2px; /* Espacio entre letras */
-            background-color: #ce7f08; /* Color de fondo */
+            background-color: #2E9F84; /* Color de fondo */
             padding: 18px 30px; /* Relleno del boton */
             position: fixed;
             bottom: 40px;
@@ -41,7 +46,7 @@
         }
 
         #singup_login:hover {
-            background-color: #AD6F12; /* Color de fondo al pasar el cursor */
+            background-color: #515760; /* Color de fondo al pasar el cursor */
             box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
             transform: translateY(-7px);
         }
@@ -78,7 +83,7 @@
 
         #search {
             border: none;
-            border-bottom: 2px solid #ce7f08;
+            border-bottom: 2px solid #2E9F84;
             background-color: transparent;
             width: 40rem;
         }
@@ -93,11 +98,103 @@
 
         #search + ion-icon[name="search-sharp"] {
             position: absolute;
-            color: #ce7f08;
+            color: #2E9F84;
         }
 
         .form {
             position: relative;
+        }
+
+        #title {
+            font-size: 30px;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        #boton, #boton::after {
+            width: 200px;
+            height: 80px;
+            font-size: 36px;
+            font-family: 'Bebas Neue', cursive;
+            background: linear-gradient(45deg, transparent 5%, #2E9F84 5%);
+            border: 0;
+            color: #fff;
+            letter-spacing: 3px;
+            line-height: 88px;
+            box-shadow: 6px 0px 0px #515760;
+            outline: transparent;
+            position: relative;
+        }
+
+        #boton::after {
+            --slice-0: inset(50% 50% 50% 50%);
+            --slice-1: inset(80% -6px 0 0);
+            --slice-2: inset(50% -6px 30% 0);
+            --slice-3: inset(10% -6px 85% 0);
+            --slice-4: inset(40% -6px 43% 0);
+            --slice-5: inset(80% -6px 5% 0);
+
+            content: 'leer más';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 3%, #515760 3%, #515760 5%, #2E9F84 5%);
+            text-shadow: -3px -3px 0px #D6EC90, 3px 3px 0px #515760;
+            clip-path: var(--slice-0);
+        }
+
+        #boton:hover::after {
+            animation: 1s glitch;
+            animation-timing-function: steps(2, end);
+        }
+
+        @keyframes glitch {
+            0% {
+                clip-path: var(--slice-1);
+                transform: translate(-20px, -10px);
+            }
+            10% {
+                clip-path: var(--slice-3);
+                transform: translate(10px, 10px);
+            }
+            20% {
+                clip-path: var(--slice-1);
+                transform: translate(-10px, 10px);
+            }
+            30% {
+                clip-path: var(--slice-3);
+                transform: translate(0px, 5px);
+            }
+            40% {
+                clip-path: var(--slice-2);
+                transform: translate(-5px, 0px);
+            }
+            50% {
+                clip-path: var(--slice-3);
+                transform: translate(5px, 0px);
+            }
+            60% {
+                clip-path: var(--slice-4);
+                transform: translate(5px, 10px);
+            }
+            70% {
+                clip-path: var(--slice-2);
+                transform: translate(-10px, 10px);
+            }
+            80% {
+                clip-path: var(--slice-5);
+                transform: translate(20px, -10px);
+            }
+            90% {
+                clip-path: var(--slice-1);
+                transform: translate(-10px, 0px);
+            }
+            100% {
+                clip-path: var(--slice-1);
+                transform: translate(0);
+            }
         }
     </style>
     <title>InfoTeach</title>
@@ -114,11 +211,10 @@
     <h1>InfoTeach</h1>
 
 
-
 </div>
 <div id="content_search">
-    <form action="../../search/search.phtml" method="GET" class="form">
-        <input id="search" type="text" placeholder="Type here">
+    <form action="../../search/search.phtml" method="POST" class="form">
+        <input id="search" type="text" placeholder="Type here" name="search">
         <ion-icon name="search-sharp"></ion-icon>
     </form>
 </div>
@@ -127,14 +223,33 @@
 <a href="../../login_signup/login_sign_up.phtml">
     <button type="button" id="singup_login">Inciar sesión/registrase</button>
 </a>
-<div class="contenedor">
+<div id="contenedor" class="contenedor">
 
     <section class="articulos">
         <ul>
             <?php global $articulos;
-            foreach ($articulos as $articulo): ?>
-                <li>
-                    <?php echo $articulo['title'] . '-----******----- ' . $articulo['description']; ?>
+            foreach ($articulos
+
+            as $articulo): ?>
+            <li>
+                <a id="title"><?php echo $articulo['title'] ?></a>
+                <br>
+                <a id="description"><?php echo $articulo['description']; ?></a>
+                <br>
+
+
+                <img src="<?php echo "../../images/" . $articulo['image']; ?>" alt="<?php echo $articulo['title']; ?>"
+                     width="200" height="200">
+                <br>
+                <a><?php echo $articulo['date'] ?></a>
+
+                <!--<a data-title="<?php /*echo $articulo['title']; */ ?>" class="button" id="boton"
+                   onclick="<?php /*$_SESSION['blog'] = */ ?>// location.href='../../blog_page/blog.phtml'">leer more</a>-->
+                <form action="../../blog_page/blog.phtml" method="post" id="boton">
+                    <input type="hidden" name="title" value="<?php echo $articulo['title'] ?>">
+                    <input id="boton" type="submit" value="leer más">
+                </form>
+                <?php endforeach; ?>
 
 
                 </li>

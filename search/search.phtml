@@ -3,6 +3,19 @@
 
 </head>
 <body>
-<h2>hola</h2>
+<h2></h2>
 </body>
 </html>
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+$result = $conexion->query('SELECT title FROM web_grupo_alex_foro
+WHERE title LIKE "%'.$_POST['search'].'%";')->fetch();
+if (isset($result['title'])){
+    echo $result['title'];
+}
+else{
+    header("Location: ../Paginaciones/Paginacion_home/index.php");
+
+}
+
+

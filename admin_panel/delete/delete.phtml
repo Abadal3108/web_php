@@ -1,0 +1,13 @@
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+$resulta = $conexion->query("SELECT * FROM web_grupo_alex_foro ");
+foreach ($resulta as $fila) {
+    echo $fila['title'] . '</br>';
+    ?>
+    <form action="delete.php" method="post">
+        <input type="hidden" name="title" value="<?php echo $fila['title'] ?>">
+        <input type="submit" value="borrar post">
+    </form>
+    <?php
+}
+?>

@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #E9CC9E;
+    background-color: #515760;
     font-family: "Arial", sans-serif;
     padding: 50px;
 }
@@ -11,7 +11,7 @@ body{
     padding: 10px;
     width: 300px;
     height: 400px;
-    background-color: #F6DFA3;
+    background-color: #D6EC90;
     border-radius: 10px;
 }
 h1{
@@ -41,18 +41,18 @@ form .field{
     background-color: #ECF0F1;
 }
 form .field:focus {
-    border: 2px solid #FEC363;
+    border: 2px solid #2E9F84;
 }
 form .btn{
-    background-color: #FEC363;
+    background-color: #2E9F84;
     color: #fff;
     line-height: 25px;
     cursor: pointer;
 }
 form .btn:hover,
 form .btn:active {
-    background-color: #FEC363;
-    border: 2px solid #FEC363;
+    background-color: #2E9F84;
+    border: 2px solid #2E9F84;
 }
 .pass-link{
     text-align: center;

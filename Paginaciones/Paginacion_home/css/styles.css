@@ -12,7 +12,7 @@ body {
 h1 {
     text-align: center;
     font-family: "Oswald", Arial, helvetica, sans-serif;
-    color: #ce7f08;
+    color: #D5EC8B;
     font-weight: normal;
 }
 
@@ -29,7 +29,7 @@ h1 {
 
     padding: 150px 10px;
 
-    border-bottom: 1px solid #c8c8c8;
+
 }
 
 .paginacion ul{
@@ -44,7 +44,7 @@ h1 {
 }
 
 .paginacion ul .active a {
-    background: #ce7f08;
+    background: #2E9F84;
 }
 
 .paginacion ul .disabled {
@@ -71,7 +71,7 @@ h1 {
 
 .paginacion ul li a:hover{
     text-decoration: none;
-    background: #AD6F12;
+    background: #D5EC8B;
 }
 .paginacion {
     padding-top: 50px;

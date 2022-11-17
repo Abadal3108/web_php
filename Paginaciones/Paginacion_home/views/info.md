@@ -1,6 +1,6 @@
 the view is the home/home or home/home_user
 
-
+/*
 <?php
     $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
     if (isset($_GET["submit"])) {
@@ -28,3 +28,8 @@ the view is the home/home or home/home_user
         }
     }
     ?>
+
+
+
+
+el añadir foto peta si hay espacios
