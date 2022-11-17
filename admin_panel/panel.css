@@ -41,7 +41,9 @@ h1 {
     position:relative;
     top:1px;
 }
-
-
+#options{
+    text-align: center;
+    margin-top: 200px;
+}
 
 
