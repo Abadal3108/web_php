@@ -16,7 +16,7 @@ if (!isset($_POST['mail'])) {
 
     $mail = $_POST['mail'];
     if ($mail == null) {
-        header("Location: sign_up.php");
+        header("Location: sign_up.phtml");
     } else {
 
         $password = $_POST['password'];

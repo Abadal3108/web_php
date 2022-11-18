@@ -1,32 +1,39 @@
 <html>
 <head>
-
-
-    <title>InfoTeach</title>
-
-
+    <link rel="stylesheet" type="text/css" href="publicar.css">
 </head>
 
-<link rel="stylesheet" type="text/css" href="publicar.css">
 <body id="body">
 <div id="head">
+    <h1 onclick="location.href='../../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
 
-    <h1>InfoTeach</h1>
 
+</div>
 
-    <form action="publicar.php" method="POST" id="form_publicar" enctype="multipart/form-data">
-        <input type="text" placeholder="Title" class="field" name="title">
-        <br>
-        <input type="text" placeholder="description" class="field" name="description">
-        <br>
-        <textarea id="content" name="content" cols="40" rows="5"></textarea>
-        <br>
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <br>
-        <input type="submit" value="Publicar" class="btn" name="Publicar">
-    </form>
+<form action="publicar.php" method="POST" id="form_publicar" enctype="multipart/form-data">
+    <input type="text" placeholder="Title" class="field" name="title">
+    <br>
+    <input type="text" placeholder="description" class="field" name="description">
+    <br>
+    <textarea id="content" name="content" cols="40" rows="5"></textarea>
+    <br>
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <br>
+    <input type="submit" value="Publicar" class="btn" name="Publicar">
+</form>
+
 
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
 

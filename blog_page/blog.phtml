@@ -7,9 +7,16 @@ $result = $conexion->query('SELECT title,description,content,image,date FROM web
 ?>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="publicar.css">
+    <link rel="stylesheet" type="text/css" href="blog.css">
 </head>
 <body>
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+
 <h1><?php echo $result['title'] ?></h1>
 
 <div id="content_blog">
@@ -27,6 +34,7 @@ $result = $conexion->query('SELECT title,description,content,image,date FROM web
     <div id="date"></div>
     <a><?php echo $result['date'] ?></a>
     <br>
+</div>
 </div>
 </body>
 </html>
