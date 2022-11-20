@@ -35,6 +35,30 @@ $result = $conexion->query('SELECT title,description,content,image,date FROM web
     <a><?php echo $result['date'] ?></a>
     <br>
 </div>
+<div id="comentarios">
+<h2>Comentarios</h2>
+    <?php
+$resulta = $conexion->query('SELECT * FROM web_grupo_alex_comentario where post ="' .$result['title']  . '"');
+foreach ($resulta as $fila) {
+    echo $fila['user'];
+    ?>
+    <a> a las</a>
+    <?php
+    echo $fila['date'] ;
+    ?>
+    <a> dice :</a>
+    <?php
+    echo $fila['content'] . '</br>';
+echo '</br>';
+}
+?>
+<form action="comentarios/comentarios.phtml" method="post" id="boton">
+    <input type="hidden" name="title" value="<?php echo $result['title'] ?>">
+    <input id="boton" type="submit" value="Publicar comentario">
+</form>
+
+
+</div>
 </div>
 </body>
 </html>

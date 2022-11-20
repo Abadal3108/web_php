@@ -1,0 +1,24 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="comentarios.css">
+</head>
+
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+<h2 id="comentario">Que quieres comentar?</h2>
+<form action="comentarios.php" method="POST" id="form_publicar" enctype="multipart/form-data">
+
+    <textarea id="content" name="content" cols="40" rows="5"></textarea>
+    <br>
+    <input type="hidden" name="title" value="<?php echo $_POST['title'] ?>">
+    <input type="submit" value="Publicar" class="btn" name="Publicar">
+</form>
+
+
+</div>
+</body>
+</html>
