@@ -1,0 +1,32 @@
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+$result = $conexion->query('SELECT * FROM web_grupo_alex_foro WHERE title="' . $_POST['title'] . '"')->fetch();
+?>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="blog_edit.css">
+</head>
+
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+
+<form action="blog_edit.php" method="POST" id="form_publicar" enctype="multipart/form-data">
+    <input type="text" placeholder="Title" class="field" name="title" value="<?php echo $result['title'] ?>"
+    <br>
+    <input type="text" placeholder="description" class="field" name="description" value="<?php echo $result['description'] ?>">
+    <br>
+    <textarea id="content" name="content" cols="40" rows="5" ><?php echo $result['content'] ?></textarea>
+    <br>
+
+    <br>
+    <input type="submit" value="Publicar" class="btn" name="subir">
+</form>
+
+
+</div>
+</body>
+</html>

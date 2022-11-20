@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="delete.css">
+    <link rel="stylesheet" type="text/css" href="edit.css">
 </head>
 
 <body id="body">
@@ -12,23 +12,22 @@
 
 
 </div>
+
 <?php
 $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
 $resulta = $conexion->query("SELECT * FROM web_grupo_alex_foro ");
 foreach ($resulta as $fila) {
     echo $fila['title'] . '</br>';
     ?>
-    <form action="delete.php" method="post">
+    <form action="blog_edit.phtml" method="post">
         <input type="hidden" name="title" value="<?php echo $fila['title'] ?>">
-        <input type="submit" value="borrar post">
+        <input type="submit" value="editar">
     </form>
     <?php
 }
 ?>
 
 
-
 </div>
 </body>
 </html>
-

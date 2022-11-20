@@ -24,7 +24,6 @@ h1 {
     font-weight: normal;
 }
 
-
 #hr_pages {
     padding-bottom: 30px;
     background-color: #515760;
@@ -42,33 +41,3 @@ h1 {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-
-#form_publicar{
-    padding-top: 30px;
-    text-align: center;
-}
-input[name="title"]{
-    width: 50%;
-    margin-bottom: 40px;
-}
-input[name="description"]{
-    width: 50%;
-    margin-bottom: 40px;
-
-}
-#content{
-    width: 50%;
-    height: 1000px;
-     margin-bottom: 40px;
-
-}
-#fileToUpload{
-
-      margin-bottom: 40px;
-
-  }
-input[name="Publicar"]{
-     width: 25%;
-     margin-bottom: 40px;
-
- }
