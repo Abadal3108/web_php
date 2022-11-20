@@ -26,12 +26,15 @@ if (isset($_SESSION['user'])) {
             $result = $conexion->query("SELECT mail FROM web_grupo_alex WHERE mail='$mail'")->fetch();
         }
         if (isset($mail)) {
+            if ($mail == $result['mail']) {
 
+
+            } else {
                 $add = $conexion->query('insert into web_grupo_alex(name,mail,password,age,rol)
-                                        values ("'.$name.'","'.$mail.'","'.$password.'","'.$age.'","' . $rol . '")');
+                                        values ("' . $name . '","' . $mail . '","' . $password . '","' . $age . '","' . $rol . '")');
 
                 header("Location: edit_user.phtml");
-
+            }
 
 
         }

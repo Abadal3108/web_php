@@ -1,0 +1,47 @@
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+$result = $conexion->query('SELECT * FROM web_grupo_alex WHERE mail="' . $_POST['mail'] . '"')->fetch();
+session_start();
+if (isset($_SESSION['user'])) {
+?>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="edit_user.css">
+</head>
+
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+<br><br><br><br><br>
+<form action="user_edit.php" method="POST" id="form_publicar" enctype="multipart/form-data">
+    <input type="text" placeholder="name" class="field" name="name" value="<?php echo $result['name'] ?>">
+    <br>
+    <br>
+    <input type="text" placeholder="mail" class="field" name="mail" value="<?php echo $result['mail'] ?>">
+    <br>
+    <br>
+    <input type="text" placeholder="password" class="field" name="password" value="<?php echo $result['password'] ?>">
+    <br>
+    <br>
+    <input type="number" placeholder="age" class="field" name="age" value="<?php echo $result['age'] ?>">
+    <br>
+    <br>
+    <input type="text" placeholder="admin o reader" class="field" name="rol" value="<?php echo $result['rol'] ?>">
+    <br>
+    <br>
+    <input type="submit" value="Publicar" class="btn" name="Editar">
+</form>
+
+
+</div>
+<?php
+}else{
+    echo "NO ERES ADMIN";
+}
+?>
+</body>
+</html>

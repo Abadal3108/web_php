@@ -3,14 +3,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="search.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
-<body>
 <body id="body">
 <div id="head">
     <h1 onclick="location.href='../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
@@ -23,40 +21,38 @@
 </div>
 
 
-</div>
-<?php
-$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
-$result = $conexion->query('SELECT * FROM web_grupo_alex_foro
-WHERE title LIKE "%' . $_POST['search'] . '%";')->fetchAll();
-if (!empty($result)) {
-
-?>
-<?php
-foreach ($result
-
-as $result): ?>
-
-    <a id="title"><?php echo $result['title'] ?></a>
-    <br>
-    <a id="description"><?php echo $result['description']; ?></a>
-    <br>
-    <a><?php echo $result['date'] ?></a>
-    <br>
-    <img src="<?php echo "../../images/" . $result['image']; ?>" alt="<?php echo $result['title']; ?>"
-         width="200" height="200">
-    <br>
-
-
-    <!--<a data-title="<?php /*echo $articulo['title']; */ ?>" class="button" id="boton"
-                   onclick="<?php /*$_SESSION['blog'] = */ ?>// location.href='../../blog_page/blog.phtml'">leer more</a>-->
-    <form action="../blog_page/blog.phtml" method="post" id="boton">
-        <input type="hidden" name="title" value="<?php echo $result['title'] ?>">
-        <input id="boton" type="submit" value="leer más">
-    </form>
-
-    <?php endforeach; ?>
-
+<div class="container">
     <?php
+    $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+    $result = $conexion->query('SELECT * FROM web_grupo_alex_foro
+WHERE title LIKE "%' . $_POST['search'] . '%";')->fetchAll();
+    if (!empty($result)) {
+
+        ?>
+        <?php
+        foreach ($result
+
+                 as $result): ?>
+
+            <a id="title"><?php echo $result['title'] ?></a>
+            <br>
+            <a id="description"><?php echo $result['description']; ?></a>
+            <br>
+            <a><?php echo $result['date'] ?></a>
+            <br>
+            <img src="<?php echo "../../images/" . $result['image']; ?>" alt="<?php echo $result['title']; ?>"
+                 width="200" height="200">
+            <br>
+
+
+            <form action="../blog_page/blog.phtml" method="post" id="boton">
+                <input type="hidden" name="title" value="<?php echo $result['title'] ?>">
+                <input id="boton" type="submit" value="leer más">
+            </form>
+
+        <?php endforeach; ?>
+
+        <?php
 
     } else {
         header("Location: ../Paginaciones/Paginacion_home/index.php");
@@ -64,8 +60,7 @@ as $result): ?>
     }
 
     ?>
+</div>
 
-
-    </div>
 </body>
 </html>
