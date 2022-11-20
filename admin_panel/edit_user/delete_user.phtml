@@ -1,7 +1,8 @@
 <?php
 $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
-$borrar = $conexion->query('DELETE FROM web_grupo_alex WHERE mail="' . $_POST['mail'] . '"');
-$borrar->fetchAll();
 $delete = $conexion->query('DELETE FROM web_grupo_alex_comentario WHERE user="' . $_POST['mail'] . '"');
 $delete->fetchAll();
+$borrar = $conexion->query('DELETE FROM web_grupo_alex WHERE mail="' . $_POST['mail'] . '"');
+$borrar->fetchAll();
+
 header("Location: edit_user.phtml");
