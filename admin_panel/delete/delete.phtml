@@ -1,5 +1,8 @@
 
-
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+?>
 
 <html>
 <head>
@@ -29,6 +32,10 @@ foreach ($resulta as $fila) {
 
 
 </div>
+<?php
+}else{
+    echo "NO ERES ADMIN";
+}
+?>
 </body>
 </html>
-

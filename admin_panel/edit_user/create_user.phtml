@@ -1,0 +1,45 @@
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+?>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="edit_user.css">
+</head>
+
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+<br><br><br><br><br>
+<form action="create_user.php" method="POST" id="form_publicar" enctype="multipart/form-data">
+    <input type="text" placeholder="name" class="field" name="name">
+    <br>
+    <br>
+    <input type="text" placeholder="mail" class="field" name="mail">
+    <br>
+    <br>
+    <input type="password" placeholder="password" class="field" name="password">
+    <br>
+    <br>
+    <input type="number" placeholder="age" class="field" name="age">
+    <br>
+    <br>
+    <input type="text" placeholder="admin o reader" class="field" name="rol">
+    <br>
+    <br>
+    <input type="submit" value="Publicar" class="btn" name="Crear">
+</form>
+
+
+</div>
+<?php
+}else{
+    echo "NO ERES ADMIN";
+}
+?>
+</body>
+</html>

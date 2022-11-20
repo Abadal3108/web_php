@@ -1,3 +1,7 @@
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+?>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="blog.css">
@@ -12,17 +16,24 @@
 
 <div id="options">
     <link rel="stylesheet" type="text/css" href="panel.css">
-    <a href="publicar/publicar.html" class="myButton">Publicar</a>
+    <a href="publicar/publicar.phtml" class="myButton">Publicar</a>
     <br>
     <a href="edit/edit.phtml" class="myButton">Editar</a>
     <br>
     <a href="delete/delete.phtml" class="myButton">Borrar</a>
+    <br>
+    <a href="edit_user/edit_user.phtml" class="myButton">Edit users</a>
 </div>
 
 
 </div>
-</body>
-</html>
+
 <?php
 $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
 
+}else{
+    echo "NO ERES ADMIN";
+}
+?>
+</body>
+</html>

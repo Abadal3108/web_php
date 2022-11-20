@@ -1,0 +1,55 @@
+<?php
+session_start();
+if (isset($_SESSION['user'])) {
+?>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="edit_user.css">
+</head>
+<body>
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+<h2>Create user</h2>
+<button onclick="window.location.href='create_user.phtml'" class="myButton">Create</button>
+
+<br>
+<br>
+<br>
+<hr>
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+$resulta = $conexion->query("SELECT * FROM web_grupo_alex ");
+?>
+<?php foreach ($resulta as $fila):
+    echo $fila['name'] . '</br>';
+    echo $fila['rol'] . '</br>';
+    ?>
+    </br>
+    <form action="delete_user.phtml" method="post">
+        <input type="hidden" name="mail" value="<?php echo $fila['mail'] ?>">
+        <input type="submit" value="Delete" class="myButton">
+    </form>
+
+    <form action="user_edit.phtml" method="post">
+        <input type="hidden" name="mail" value="<?php echo $fila['mail'] ?>">
+        <input type="submit" value="Edit" class="myButton">
+    </form>
+
+<hr>
+
+<?php endforeach; ?>
+</div>
+
+<?php
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+
+} else {
+    echo "NO ERES ADMIN";
+}
+?>
+</body>
+</html>
