@@ -17,16 +17,23 @@ $result = $conexion->query('SELECT title,description,content,image,date FROM web
 
 </div>
 
-<h1><?php echo $result['title'] ?></h1>
+
 
 <div id="content_blog">
-    <div id="description"></div>
+    <div id="title">
+        <a><?php echo $result['title'] ?></a>
+    </div>
+
+    <br>
+
+
     <a><?php echo $result['description'] ?></a>
     <br>
-    <div id="content"></div>
+
+
     <a><?php echo $result['content'] ?></a>
     <br>
-    <div id="image"></div>
+
     <a><img src="<?php echo "../../images/" . $result['image']; ?>" alt="<?php echo $result['title']; ?>"
             width="400" height="350">
     </a>
