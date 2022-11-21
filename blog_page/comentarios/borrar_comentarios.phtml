@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="comentarios.css">
+</head>
+
+<body id="body">
+<div id="head">
+    <h1 onclick="location.href='../../Paginaciones/Paginacion_home/index.php'">InfoTeach</h1>
+
+
+</div>
+<?php
+session_start();
+$conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
+$user = $_POST['borrar_user'];
+$title = $_POST['borrar_title'];
+
+if ($_SESSION['rol']=="admin") {
+    ?>
+    <h2>Comentarios en <?php echo $_POST['borrar_title']
+        ?></h2>
+    <?php
+    $resulta = $conexion->query('SELECT * FROM web_grupo_alex_comentario WHERE post="' . $title . '"');
+}else{
+    ?>
+    <h2>Mis comentarios en <?php echo $_POST['borrar_title']
+        ?></h2>
+    <?php
+    $resulta = $conexion->query('SELECT * FROM web_grupo_alex_comentario WHERE post="' . $title . '" AND user ="' . $user . '" ');
+
+}
+foreach ($resulta as $fila) {
+    ?>
+
+    <?php
+    echo $fila['user'] . '</br>';
+    echo $fila['content'] . '</br>';
+    ?>
+    <form action="borrar_comentarios.php" method="post">
+        <input type="hidden" name="content" value="<?php echo $fila['content'] ?>">
+        <input type="submit" value="borrar">
+    </form>
+    <hr>
+    <?php
+}
+?>
+
+
+</div>
+</body>
+</html>

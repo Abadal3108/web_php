@@ -2,7 +2,7 @@
 $conexion = new PDO('mysql:host=fmesasc.com;dbname=daw2', 'daw2', 'Gimbernat');
 $result = $conexion->query('SELECT * FROM web_grupo_alex WHERE mail="' . $_POST['mail'] . '"')->fetch();
 session_start();
-if (isset($_SESSION['user'])) {
+if ($_SESSION['rol']=="admin") {
 ?>
 
 <html>

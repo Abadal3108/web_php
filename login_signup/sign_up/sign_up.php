@@ -32,6 +32,7 @@ if (!isset($_POST['mail'])) {
                                         values ('$name','$mail','$password','$age','reader','')");
             session_start();
             $_SESSION['user'] = $mail;
+            $_SESSION['rol']="reader";
           header("Location: ../../Paginaciones/Paginacion_home/index.php");
 
 

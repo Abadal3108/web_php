@@ -32,7 +32,7 @@ values ('try4','descripcion','hola me llamo alex hola me llamo nil','captura.png
 */
 
 
-/*$resulta = $conexion->query("SELECT * FROM web_grupo_alex ");
+$resulta = $conexion->query("SELECT * FROM web_grupo_alex ");
 foreach ($resulta as $fila) {
     echo $fila['name'] . '</br>';
     echo $fila['password'] . '</br>';
@@ -50,7 +50,7 @@ foreach ($resulta as $fila) {
     echo $fila['description'] . '</br>';
     echo $fila['image'] . '</br>';
 
-}*/
+}
 /*$resultados = $conexion->query("CREATE TABLE web_grupo_alex_comentario (
     user varchar(30),
     post varchar(40),
